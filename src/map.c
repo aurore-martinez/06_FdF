@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:00 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 13:58:27 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:48:27 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,21 +101,25 @@ void	parse_map(char *filename, t_map *map)
 		error_message("[FILE ERROR]: failed to open map\n", 0);
 	map->height = 0;
 	map->width = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (map->height == 0)
 			map->width = word_count(line, ' ');
 		map->height++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	map->grid = alloc_grid(map->width, map->height);
 	fd = open(filename, O_RDONLY);
 	i = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		parse_line(line, map->grid[i], i);
 		free(line);
+		line = get_next_line(fd);
 		i++;
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:07 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 13:40:02 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:40:34 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ int	word_count(char *str, char c)
 /* i = 2 pour skip "0x" */
 int	ft_atoi_base(char *str, int base)
 {
-	int	result = 0;
+	int	result;
 	int	value;
-	int	i = 0;
+	int	i;
 
+	result = 0;
+	i = 0;
 	if (!str)
 		return (0);
 	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
@@ -77,10 +79,10 @@ void	show_help(void)
 	ft_putstr_fd("Contrôles :\n", 1);
 	ft_putstr_fd("  Flèches   Déplacer la vue\n", 1);
 	ft_putstr_fd("  +/-       Zoom avant/arrière\n", 1);
-	ft_putstr_fd("  1/2       Augmenter/Réduire la hauteur\n", 1);
-	ft_putstr_fd("  9/0       Augmenter/Réduire la taille des tuiles\n", 1);
+	ft_putstr_fd("  1/2       Augmenter/Réduire z_scale / la hauteur\n", 1);
+	ft_putstr_fd("  9/0       Augmenter/Réduire tile_size\n", 1);
 	ft_putstr_fd("  QWERTY    Changer les couleurs (Rouge, Vert, Bleu...)\n", 1);
-	ft_putstr_fd("  ASDFGH    Changer les couleurs (Blanc, Gris, Orange...)\n", 1);
+	ft_putstr_fd("  ASDFGH    Changer les couleurs (Blanc, Orange...)\n", 1);
 	ft_putstr_fd("  ESC       Quitter le programme\n", 1);
 	ft_putstr_fd("\n", 1);
 	exit(EXIT_SUCCESS);
