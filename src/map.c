@@ -6,11 +6,36 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:00 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 15:48:27 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:08:40 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
+
+/*
+	Gérer la lecture, le stockage et la libération de la map :
+
+	Alloc mémoire pour la grille de points (alloc_grid)
+	- Alloue un tableau 2D de `t_point` pour représenter la carte.
+	- Si une allocation échoue, libère tout proprement avec free_grid().
+
+	Free mémoire de la grille (free_grid)
+	- Libère chaque ligne de la grille et enfin la grille elle-même.
+
+	Lecture et découpage couleur/token de la carte (parse_token)
+	- Lit une valeur de hauteur (z) et éventuellement une couleur (hexadécimale).
+	- Associe les coordonnées `(x, y)` et la couleur à chaque `t_point`.
+
+	Lecture et découpage d'une ligne complète de la carte (parse_line)
+	- Lit tous les "tokens" d'une ligne (séparés par des espaces).
+	- Pour chaque token, appelle `parse_token`.
+
+	Lecture complète de la carte depuis un fichier (parse_map)
+	- Ouvre et lit le fichier ligne par ligne.
+	- Calcule la largeur et la hauteur de la carte.
+	- Alloue la grille de points.
+	- Remplit la grille avec les valeurs lues.
+*/
 
 static t_point	**alloc_grid(int width, int height)
 {
@@ -51,76 +76,9 @@ void	free_grid(t_point	**grid)
 	}
 }
 
-/* point->color = -1; défaut */
-static void	parse_token(char *token, t_point *point, int x, int y)
-{
-	char	**parts;
-
-	parts = ft_split(token, ',');
-	point->x = x;
-	point->y = y;
-	point->z = ft_atoi(parts[0]);
-	point->color = -1;
-	if (parts[1])
-		point->color = ft_atoi_base(parts[1], 16);
-	free(parts[0]);
-	if (parts[1])
-		free(parts[1]);
-	free(parts);
-}
-
-/* printf("Parsed color: %s -> %06X\n", parts[1], point->color); */
-
-static int	parse_line(char *line, t_point *row, int y)
-{
-	char	**split;
-	int		i;
-
-	split = ft_split(line, ' ');
-	if (!split)
-		error_message("[PARSE ERROR]: ft_split failed\n", 1);
-	i = 0;
-	while (split[i])
-	{
-		parse_token(split[i], &row[i], i, y);
-		free(split[i]);
-		i++;
-	}
-	free(split);
-	return (i);
-}
-
 void	parse_map(char *filename, t_map *map)
 {
-	char	*line;
-	int		fd;
-	int		i;
-
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		error_message("[FILE ERROR]: failed to open map\n", 0);
-	map->height = 0;
-	map->width = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (map->height == 0)
-			map->width = word_count(line, ' ');
-		map->height++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
+	get_map_size(filename, map);
 	map->grid = alloc_grid(map->width, map->height);
-	fd = open(filename, O_RDONLY);
-	i = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		parse_line(line, map->grid[i], i);
-		free(line);
-		line = get_next_line(fd);
-		i++;
-	}
-	close(fd);
+	fill_grid(filename, map);
 }

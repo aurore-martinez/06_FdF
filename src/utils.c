@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:07 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 15:40:34 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:15:49 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,16 @@ int	ft_atoi_base(char *str, int base)
 	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
-			value = str[i] - '0';
+			value = str[i++] - '0';
 		else if (str[i] >= 'a' && str[i] <= 'f')
-			value = str[i] - 'a' + 10;
+			value = str[i++] - 'a' + 10;
 		else if (str[i] >= 'A' && str[i] <= 'F')
-			value = str[i] - 'A' + 10;
+			value = str[i++] - 'A' + 10;
 		else
 			break ;
 		if (value >= base)
 			break ;
 		result = result * base + value;
-		i++;
 	}
 	return (result);
 }

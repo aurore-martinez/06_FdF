@@ -6,7 +6,7 @@
 #    By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/26 09:29:59 by aumartin          #+#    #+#              #
-#    Updated: 2025/04/04 12:17:06 by aumartin         ###   ########.fr        #
+#    Updated: 2025/04/04 16:12:21 by aumartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRC_FILES = bonus.c \
 			engine.c \
 			events.c \
 			map.c \
+			map_parsing.c \
 			projection.c \
 			render.c \
 			utils.c

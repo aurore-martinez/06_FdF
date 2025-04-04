@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 18:20:33 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 13:58:49 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:10:18 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,12 @@ t_point			get_projected_point(t_point p, t_engine *engine);
 
 void			init_engine(t_engine *engine, char *filename);
 void			render_map(t_engine *engine);
-void			free_grid(t_point	**grid);
 void			init_camera(t_camera *camera);
 
-// Parsing
+/* Map Parsing */
+void			get_map_size(char *filename, t_map *map);
+void			fill_grid(char *filename, t_map *map);
+void			free_grid(t_point	**grid);
 void			parse_map(char *filename, t_map *map);
 
 // Events
