@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:39:20 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 12:48:41 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:58:38 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int	on_destroy_event(void *param)
 		mlx_destroy_image(engine->mlx, engine->image.img_ptr);
 	if (engine->window)
 		mlx_destroy_window(engine->mlx, engine->window);
+	if (engine->mlx)
+		mlx_destroy_display(engine->mlx);
+	free(engine->mlx);
+	free_grid(engine->map.grid);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

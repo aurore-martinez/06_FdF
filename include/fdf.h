@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 18:20:33 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 12:18:25 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:58:49 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../lib/ft_printf/ft_printf.h"
 # include "../lib/gnl/get_next_line_bonus.h"
 # include "../lib/ft_bool/ft_boolean.h"
-# include "../minilibx_macos/mlx.h"
 # include "../minilibx-linux/mlx.h"
 # include "keys.h"
 
@@ -94,6 +93,7 @@ t_point			get_projected_point(t_point p, t_engine *engine);
 
 void			init_engine(t_engine *engine, char *filename);
 void			render_map(t_engine *engine);
+void			free_grid(t_point	**grid);
 void			init_camera(t_camera *camera);
 
 // Parsing

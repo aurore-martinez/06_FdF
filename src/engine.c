@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:39:53 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 12:44:47 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:13:34 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_engine(t_engine *engine, char *filename)
 	int	line_len;
 	int	endian;
 
+	parse_map(filename, &engine->map);
 	engine->mlx = mlx_init();
 	if (!engine->mlx)
 		error_message("[MLX ERROR]: can't init mlx!\n", 1);
@@ -56,7 +57,6 @@ void	init_engine(t_engine *engine, char *filename)
 	engine->image.pixel_bits = pixel_bits;
 	engine->image.line_len = line_len;
 	engine->image.endian = endian;
-	parse_map(filename, &engine->map);
 	init_camera(&engine->camera);
 	engine->camera.z_scale = determine_z_scale(&engine->map);
 	engine->camera.tile_size = determine_tile_size(&engine->map);

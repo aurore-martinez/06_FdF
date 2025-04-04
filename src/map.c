@@ -6,39 +6,61 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:00 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 10:40:01 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:58:27 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-static t_point **alloc_grid(int width, int height)
+static t_point	**alloc_grid(int width, int height)
 {
-	t_point **grid;
-	int i;
+	t_point	**grid;
+	int		i;
 
-	grid = malloc(sizeof(t_point *) * height);
+	grid = ft_calloc(height + 1, sizeof(t_point *));
 	if (!grid)
+	{
 		error_message("[ALLOC ERROR]: grid malloc failed\n", 1);
+	}
 	i = -1;
 	while (++i < height)
 	{
 		grid[i] = malloc(sizeof(t_point) * width);
 		if (!grid[i])
+		{
 			error_message("[ALLOC ERROR]: row malloc failed\n", 1);
+			free_grid(grid);
+		}
 	}
 	return (grid);
 }
 
+void	free_grid(t_point	**grid)
+{
+	int	i;
+
+	if (grid)
+	{
+		i = 0;
+		while (grid[i])
+		{
+			free(grid[i]);
+			i++;
+		}
+		free(grid);
+	}
+}
+
+/* point->color = -1; défaut */
 static void	parse_token(char *token, t_point *point, int x, int y)
 {
-	char **parts;
+	char	**parts;
 
 	parts = ft_split(token, ',');
 	point->x = x;
 	point->y = y;
 	point->z = ft_atoi(parts[0]);
-	point->color = -1; // défaut
+	point->color = -1;
 	if (parts[1])
 		point->color = ft_atoi_base(parts[1], 16);
 	free(parts[0]);
@@ -77,7 +99,6 @@ void	parse_map(char *filename, t_map *map)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		error_message("[FILE ERROR]: failed to open map\n", 0);
-
 	map->height = 0;
 	map->width = 0;
 	while ((line = get_next_line(fd)))
@@ -88,7 +109,6 @@ void	parse_map(char *filename, t_map *map)
 		free(line);
 	}
 	close(fd);
-
 	map->grid = alloc_grid(map->width, map->height);
 	fd = open(filename, O_RDONLY);
 	i = 0;
@@ -100,4 +120,3 @@ void	parse_map(char *filename, t_map *map)
 	}
 	close(fd);
 }
-

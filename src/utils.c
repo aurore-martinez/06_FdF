@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:07 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 11:50:45 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:40:02 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	word_count(char *str, char c)
 	}
 	return (count);
 }
-// i = 2 pour skip "0x"
+
+/* i = 2 pour skip "0x" */
 int	ft_atoi_base(char *str, int base)
 {
 	int	result = 0;
@@ -84,4 +85,3 @@ void	show_help(void)
 	ft_putstr_fd("\n", 1);
 	exit(EXIT_SUCCESS);
 }
-
