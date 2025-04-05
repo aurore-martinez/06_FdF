@@ -6,14 +6,14 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:39:53 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 13:13:34 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/05 11:04:39 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
 /*
-	Initialiser les struct principales du programme avant de commencer l'affichage
+	Initialiser les struct principales du prog avant de commencer l'affichage
 	- Initialiser la vue (init_camera)
 	- Créer la fenêtre, l'image, récupérer les infos d'affichage (init_engine)
 	- Charger la map (parse_map)

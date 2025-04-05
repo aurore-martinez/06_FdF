@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:07 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 16:15:49 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/05 11:05:00 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	show_help(void)
 	ft_putstr_fd("  +/-       Zoom avant/arrière\n", 1);
 	ft_putstr_fd("  1/2       Augmenter/Réduire z_scale / la hauteur\n", 1);
 	ft_putstr_fd("  9/0       Augmenter/Réduire tile_size\n", 1);
-	ft_putstr_fd("  QWERTY    Changer les couleurs (Rouge, Vert, Bleu...)\n", 1);
-	ft_putstr_fd("  ASDFGH    Changer les couleurs (Blanc, Orange...)\n", 1);
+	ft_putstr_fd("  QWERTY    Changer les coul (Rouge, Vert, Bleu...)\n", 1);
+	ft_putstr_fd("  ASDFGH    Changer les coul (Blanc, Orange...)\n", 1);
 	ft_putstr_fd("  ESC       Quitter le programme\n", 1);
 	ft_putstr_fd("\n", 1);
 	exit(EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: aumartin <aumartin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 10:40:03 by aumartin          #+#    #+#             */
-/*   Updated: 2025/04/04 15:56:07 by aumartin         ###   ########.fr       */
+/*   Updated: 2025/04/05 11:04:19 by aumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 	(`draw_connections`).
 
 	Envoyer l'image à l'écran :
-	- Une fois toute l'image recréée dans le buffer, afficher l'image sur la fenêtre
-	avec `mlx_put_image_to_window`.
+	- Une fois toute l'image recréée dans le buffer, afficher l'image
+	sur la fenêtre avec `mlx_put_image_to_window`.
 */
 
 void	render_map(t_engine *engine)
