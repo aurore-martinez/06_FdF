@@ -21,15 +21,6 @@ Projet réalisé dans le cadre de l'école 42. L’objectif est de représenter 
 - **Réactivité améliorée** sur les petites et grandes maps (échelle Z et tuiles ajustées automatiquement)
 - **Touches de navigation et interaction claviers personnalisées**
 
-## 📁 Utilisation
-
-```bash
-make
-./fdf <map.fdf>
-
-make
-./test_fdf.sh
-
 ## 🎮 Contrôles
 Touche	Action
 Flèches	Déplacer la vue
@@ -38,5 +29,13 @@ Flèches	Déplacer la vue
 9 / 0	Taille des tuiles +/-
 Q à H	Changer de couleurs
 
-🤖 Auteur
-Aurore Mignot
+
+
+## 📁 Utilisation
+
+```bash
+make
+./fdf <map.fdf>
+
+make
+./test_fdf.sh
